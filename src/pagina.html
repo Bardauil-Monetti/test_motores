@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submarino Microcontrolado</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+      background: #0d0d0d;
+      color: #e0e0e0;
+    }
+
+    .panel {
+      flex: 1;
+      padding: 20px;
+      box-sizing: border-box;
+      border: 2px solid #111;
+    }
+
+    #controles {
+      background: #141414;
+      max-width: 20%;
+      text-align: center;
+    }
+
+    #camara {
+      background: #1b1b1b;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1.2;
+    }
+
+    #info {
+      background: #141414;
+      max-width: 20%;
+    }
+
+    h2 {
+      text-align: center;
+      color: #00aaff;
+      text-shadow: 0px 0px 8px #005577;
+    }
+
+    img {
+      max-width: 90%;
+      max-height: 80%;
+      border: 3px solid #ff3333;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #ff000050;
+    }
+
+    .control-btn {
+      background: linear-gradient(145deg, #222, #111);
+      border: 2px solid #ff3333;
+      color: #e0e0e0;
+      font-size: 22px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 0 10px #000;
+      width: 80px;
+      height: 80px;
+    }
+
+    .control-btn:hover {
+      background: #222;
+      color: #00aaff;
+      border-color: #00aaff;
+      box-shadow: 0 0 15px #00aaff88;
+    }
+
+     /*coso del joystick */
+    .joystick {
+      display: grid;
+      grid-template-columns: 80px 80px 80px;
+      grid-template-rows: 80px 80px 80px;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .up { grid-column: 2; grid-row: 1; }
+    .left { grid-column: 1; grid-row: 2; }
+    .right { grid-column: 3; grid-row: 2; }
+    .subir { grid-column: 1; grid-row: 3; }
+    .bajar { grid-column: 3; grid-row: 3; }
+  </style>
+
+  <script>
+    const ESP32_IP = ')" + WiFi.localIP().toString() + R"rawliteral(';
+    function sendCommand(cmd) {
+      fetch(`${ESP32_IP}/${cmd}`)
+        .then(response => console.log("Comando enviado:", cmd))
+        .catch(error => console.error("error:", error));
+    }
+  </script>
+</head>
+<body>
+      <!--panel de los controles-->
+  <div id="controles" class="panel">
+    <h2>Controles</h2>
+    <div class="joystick">
+     
+      <button class="control-btn up" onclick="sendCommand('adelante')">⬆️</button>
+      <button class="control-btn left" onclick="sendCommand('izquierda')">⬅️</button>
+      <button class="control-btn right" onclick="sendCommand('derecha')">➡️</button>
+      <button class="control-btn subir" onclick="sendCommand('subir')">⏫</button>
+      <button class="control-btn bajar" onclick="sendCommand('bajar')">⏬</button>
+    </div>
+  </div>
+ <!--panel de cam-->
+  <div id="camara" class="panel">
+    <h2>Cámara</h2>
+    <img src="http://ipdelacam" alt="Transmisión ESP32-CAM">
+  </div>
+<!--info -->
+  <div id="info" class="panel">
+    <h2>Info</h2>
+    <p><b>Proyecto:</b> Submarino Microcontrolado</p>
+    <p><b>Equipo:</b> Gonzalo, Benicio, Nicolás y Brenda</p>
+    <p><b>Instituto:</b> Técnico San Judas Tadeo</p>
+    <p><b>Profesor:</b> Franco Zapata</p>
+  </div>
+</body>
+</html>

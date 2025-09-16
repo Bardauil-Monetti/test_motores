@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Control de Pines ESP32</title>
+  <style>
+    html { font-family: sans-serif; text-align: center; }
+    .btn { display: inline-block; background-color: #4CAF50; border: none; color: white;
+           padding: 16px 30px; text-decoration: none; font-size: 20px; margin: 4px; cursor: pointer; border-radius: 8px; }
+    .btn-off { background-color: #f44336; }
+  </style>
+</head>
+<body>
+  <h1>Servidor Web ESP32</h1>
+  <h2>Control de Pines</h2>
+
+  <h3>Pin 1 (GPIO2)</h3>
+  <a href="/pin1_on"><button class="btn">Encender</button></a>
+  <a href="/pin1_off"><button class="btn btn-off">Apagar</button></a>
+
+  <h3>Pin 2 (GPIO5)</h3>
+  <a href="/pin2_on"><button class="btn">Encender</button></a>
+  <a href="/pin2_off"><button class="btn btn-off">Apagar</button></a>
+
+  <h3>Pin 3 (GPIO18)</h3>
+  <a href="/pin3_on"><button class="btn">Encender</button></a>
+  <a href="/pin3_off"><button class="btn btn-off">Apagar</button></a>
+
+</body>
+</html>
